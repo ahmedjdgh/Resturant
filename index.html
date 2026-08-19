@@ -18,10 +18,11 @@
 
         .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
 
-        /* قسم الفروع */
+        /* قسم الفروع وأوقات الدوام */
         .branches-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-right: 5px solid #8b0032; }
         .branches-section h3 { color: #8b0032; margin-bottom: 10px; font-size: 1.2rem; }
         .branches-section p { font-size: 1rem; color: #555; line-height: 1.8; }
+        .working-hours { background: #fff3e0; color: #e65100; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-weight: bold; display: inline-block; }
 
         /* قسم الدليفري والتوصيل للمحلات */
         .delivery-banner { background: #fff; border: 2px dashed #8b0032; padding: 20px; border-radius: 15px; text-align: center; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
@@ -51,6 +52,9 @@
         .btn-call { background-color: #388e3c; }
         .btn:hover { opacity: 0.9; transform: scale(1.03); }
 
+        /* رسالة الإغلاق */
+        .closed-notice { background: #ffebee; color: #c62828; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 40px; border: 2px solid #ef5350; font-size: 1.2rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
         /* الشكاوى والتقييم */
         .support-section { background: #fff3e0; padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 30px; border: 1px solid #ffe0b2; }
         .complaint-btn { background-color: #e65100; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
@@ -71,13 +75,16 @@
 
     <div class="container">
 
-        <!-- فروعنا -->
+        <!-- فروعنا وأوقات الدوام -->
         <div class="branches-section">
             <h3><i class="fa-solid fa-location-dot"></i> فروعنا الرئيسية:</h3>
             <p>
-                📍 <strong>عدن:</strong> الشيخ عثمان - أمام سوق السمك، وهناك فرعنا أيضاً في الهناجر.<br>
+                📍 <strong>عدن:</strong> الشيخ عثمان - أمام سوق السمك، وفرعنا أيضاً في الهناجر.<br>
                 📍 <strong>تعز:</strong> جولة المسبح، وفرع حوض الإشراف.
             </p>
+            <div class="working-hours">
+                <i class="fa-solid fa-clock"></i> أوقات الدوام والحجز: من الساعة 10:00 صباحاً إلى 10:00 مساءً
+            </div>
         </div>
 
         <!-- صورة ودعاية التوصيل للمحلات -->
@@ -137,37 +144,39 @@
             </div>
         </div>
 
-        <!-- نموذج طلب الوجبات للمحلات والدكاكين (إلزامي) -->
-        <div class="order-form-section">
-            <h3>طلب وجبة / توصيل للمحل</h3>
-            <form id="orderForm">
-                <div class="form-group">
-                    <label>اسم المحل / الدكان (إلزامي): *</label>
-                    <input type="text" id="shopName" placeholder="أدخل اسم محلك هنا..." required>
-                </div>
-                <div class="form-group">
-                    <label>عنوان المحل بالتفصيل (إلزامي): *</label>
-                    <input type="text" id="shopAddress" placeholder="الشارع، المنطقة، الجولة..." required>
-                </div>
-                <div class="form-group">
-                    <label>تفاصيل الطلب (الأكل المطلوب والكميات): *</label>
-                    <textarea id="orderDetails" rows="4" placeholder="اكتب الأطباق والكميات التي تريد حجزها..." required></textarea>
-                </div>
+        <!-- نموذج طلب الوجبات للمحلات (يظهر فقط في أوقات الدوام) -->
+        <div id="orderContainer">
+            <div class="order-form-section" id="orderFormBox">
+                <h3>طلب وجبة / توصيل للمحل</h3>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>اسم المحل / الدكان (إلزامي): *</label>
+                        <input type="text" id="shopName" placeholder="أدخل اسم محلك هنا..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>عنوان المحل بالتفصيل (إلزامي): *</label>
+                        <input type="text" id="shopAddress" placeholder="الشارع، المنطقة، الجولة..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>تفاصيل الطلب (الأكل المطلوب والكميات): *</label>
+                        <textarea id="orderDetails" rows="4" placeholder="اكتب الأطباق والكميات التي تريد حجزها..." required></textarea>
+                    </div>
 
-                <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 10px;">اختر طريقة إرسال الطلب لرقمنا (770060055):</p>
-                
-                <div class="order-actions">
-                    <button type="button" onclick="sendWhatsApp()" class="btn btn-whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i> إرسال عبر واتساب
-                    </button>
-                    <button type="button" onclick="sendSMS()" class="btn btn-sms">
-                        <i class="fa-solid fa-comment-sms"></i> إرسال عبر SMS
-                    </button>
-                    <a href="tel:+967770060055" class="btn btn-call">
-                        <i class="fa-solid fa-phone"></i> اتصال مباشر
-                    </a>
-                </div>
-            </form>
+                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 10px;">اختر طريقة إرسال الطلب لرقمنا (770060055):</p>
+                    
+                    <div class="order-actions">
+                        <button type="button" onclick="sendWhatsApp()" class="btn btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> إرسال عبر واتساب
+                        </button>
+                        <button type="button" onclick="sendSMS()" class="btn btn-sms">
+                            <i class="fa-solid fa-comment-sms"></i> إرسال عبر SMS
+                        </button>
+                        <a href="tel:+967770060055" class="btn btn-call">
+                            <i class="fa-solid fa-phone"></i> اتصال مباشر
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <!-- شكاوى واستفسارات + تقييم الخدمة -->
@@ -200,6 +209,61 @@
     </footer>
 
     <script>
+        // التحقق من أوقات الدوام وإخفاء/إظهار نموذج الحجز بالكامل
+        function checkWorkingHours() {
+            const now = new Date();
+            const currentHour = now.getHours(); // نظام 24 ساعة
+            const container = document.getElementById('orderContainer');
+
+            // من 10 صباحاً (10) إلى 10 مساءً (22)
+            if (currentHour >= 10 && currentHour < 22) {
+                container.innerHTML = `
+                    <div class="order-form-section" id="orderFormBox">
+                        <h3>طلب وجبة / توصيل للمحل</h3>
+                        <form id="orderForm">
+                            <div class="form-group">
+                                <label>اسم المحل / الدكان (إلزامي): *</label>
+                                <input type="text" id="shopName" placeholder="أدخل اسم محلك هنا..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>عنوان المحل بالتفصيل (إلزامي): *</label>
+                                <input type="text" id="shopAddress" placeholder="الشارع، المنطقة، الجولة..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>تفاصيل الطلب (الأكل المطلوب والكميات): *</label>
+                                <textarea id="orderDetails" rows="4" placeholder="اكتب الأطباق والكميات التي تريد حجزها..." required></textarea>
+                            </div>
+
+                            <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 10px;">اختر طريقة إرسال الطلب لرقمنا (770060055):</p>
+                            
+                            <div class="order-actions">
+                                <button type="button" onclick="sendWhatsApp()" class="btn btn-whatsapp">
+                                    <i class="fa-brands fa-whatsapp"></i> إرسال عبر واتساب
+                                </button>
+                                <button type="button" onclick="sendSMS()" class="btn btn-sms">
+                                    <i class="fa-solid fa-comment-sms"></i> إرسال عبر SMS
+                                </button>
+                                <a href="tel:+967770060055" class="btn btn-call">
+                                    <i class="fa-solid fa-phone"></i> اتصال مباشر
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="closed-notice">
+                        <i class="fa-solid fa-store-slash" style="font-size: 2.5rem; margin-bottom: 10px; display: block;"></i>
+                        عذراً، أوقات الدوام من الساعة 10:00 صباحاً وحتى 10:00 مساءً.<br>
+                        الحجز والطلبات مغلقة حالياً، ننتظرك خلال أوقات العمل الرسمية!
+                    </div>
+                `;
+            }
+        }
+
+        // تنفيذ التحقق فور فتح الصفحة
+        window.onload = checkWorkingHours;
+
         function sendWhatsApp() {
             const shop = document.getElementById('shopName').value.trim();
             const address = document.getElementById('shopAddress').value.trim();
