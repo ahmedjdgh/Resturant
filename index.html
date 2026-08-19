@@ -3,329 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- كود إثبات الملكية من جوجل -->
+    <meta name="google-site-verification" content="كودك_الذي_نسخته_من_جوجل_هنا" />
+    
     <title>مجموعة مطاعم السعودي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-        body { background-color: #faf5ed; color: #333; line-height: 1.6; }
-
-        /* الهيدر والشعار */
-        header { background: linear-gradient(135deg, #8b0032, #5a0020); color: #ffeb3b; text-align: center; padding: 40px 20px; border-bottom: 5px solid #ffeb3b; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        header h1 { font-family: 'Amiri', serif; font-size: 2.8rem; margin-bottom: 10px; font-weight: 700; }
-        header p { font-size: 1.1rem; color: #fff; max-width: 600px; margin: 0 auto; }
-
-        .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
-
-        /* قسم الفروع وأوقات الدوام */
-        .branches-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-right: 5px solid #8b0032; }
-        .branches-section h3 { color: #8b0032; margin-bottom: 10px; font-size: 1.2rem; }
-        .branches-section p { font-size: 1rem; color: #555; line-height: 1.8; }
-        .working-hours { background: #fff3e0; color: #e65100; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-weight: bold; display: inline-block; }
-
-        /* قسم الدليفري والتوصيل للمحلات */
-        .delivery-banner { background: #fff; border: 2px dashed #8b0032; padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .delivery-icon { font-size: 3.5rem; margin-bottom: 10px; display: inline-block; animation: bounce 1.5s infinite; }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .delivery-banner h3 { color: #8b0032; font-size: 1.3rem; margin-bottom: 8px; }
-        .delivery-banner p { color: #555; font-size: 1rem; }
-
-        /* المنيو */
-        .section-title { text-align: center; color: #8b0032; margin-bottom: 20px; font-family: 'Amiri', serif; font-size: 2rem; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 40px; }
-        .menu-category { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-top: 4px solid #8b0032; }
-        .menu-category h4 { color: #8b0032; margin-bottom: 10px; font-size: 1.2rem; }
-        .menu-category ul { list-style: none; padding-right: 15px; }
-        .menu-category li { margin-bottom: 8px; position: relative; }
-        .menu-category li::before { content: "▪"; color: #ffeb3b; position: absolute; right: -15px; }
-
-        /* نموذج طلب المحلات والدليفري */
-        .order-form-section { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); margin-bottom: 40px; }
-        .order-form-section h3 { text-align: center; color: #8b0032; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #444; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+        body { background-color: #faf5ed; color: #333; text-align: center; padding: 20px; }
         
-        .order-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
-        .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; color: white; transition: 0.3s; }
-        .btn-whatsapp { background-color: #25D366; }
-        .btn-sms { background-color: #0288d1; }
-        .btn-call { background-color: #388e3c; }
-        .btn-submit-rating { background-color: #8b0032; margin-top: 10px; width: 100%; justify-content: center; }
-        .btn:hover { opacity: 0.9; transform: scale(1.03); }
-
-        /* رسالة الإغلاق */
-        .closed-notice { background: #ffebee; color: #c62828; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 40px; border: 2px solid #ef5350; font-size: 1.2rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-
-        /* الشكاوى والتقييم */
-        .support-section { background: #fff3e0; padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 30px; border: 1px solid #ffe0b2; }
-        .complaint-btn { background-color: #e65100; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
+        .container { max-width: 500px; margin: 20px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         
-        .rating-box { margin-top: 15px; background: white; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.05); width: 100%; max-width: 320px; }
-        .rating-stars { font-size: 2.2rem; color: #ddd; cursor: pointer; display: flex; gap: 10px; justify-content: center; direction: ltr; margin-bottom: 10px; }
+        h2 { color: #8b0032; margin-bottom: 20px; }
+        
+        /* نظام التقييم */
+        .rating-box { margin: 20px 0; }
+        .rating-stars { font-size: 3rem; color: #ddd; cursor: pointer; display: flex; gap: 10px; justify-content: center; direction: ltr; }
         .rating-stars span.active { color: #ffb300; }
-        .rating-emoji { font-size: 2.5rem; margin: 8px 0; }
-
-        #rating-msg { font-size: 0.9rem; font-weight: bold; margin-top: 10px; line-height: 1.5; padding: 8px; border-radius: 6px; }
-
-        /* حقوق المصمم */
-        footer { text-align: center; padding: 25px; background: #222; color: #aaa; font-size: 0.95rem; }
-        footer a { color: #ffeb3b; text-decoration: none; font-weight: bold; }
-        footer a:hover { text-decoration: underline; }
+        
+        .rating-emoji { font-size: 3rem; margin: 15px 0; }
+        
+        .submit-btn { background: #8b0032; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #5a0020; transform: scale(1.05); }
+        
+        #rating-msg { margin-top: 20px; padding: 15px; border-radius: 10px; font-weight: bold; display: none; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>مجموعة مطاعم السعودي</h1>
-        <p>للمضغوط والكبسة السعودية والرز المندي والرز البشاور واللحم والدجاج البلدي والسمك والمعصوب والعريكة وجميع أنواع المشكلات</p>
-    </header>
-
     <div class="container">
-
-        <!-- فروعنا وأوقات الدوام -->
-        <div class="branches-section">
-            <h3><i class="fa-solid fa-location-dot"></i> فروعنا الرئيسية:</h3>
-            <p>
-                📍 <strong>عدن:</strong> الشيخ عثمان - أمام سوق السمك، وفرعنا أيضاً في الهناجر.<br>
-                📍 <strong>تعز:</strong> جولة المسبح، وفرع حوض الإشراف.
-            </p>
-            <div class="working-hours">
-                <i class="fa-solid fa-clock"></i> أوقات الدوام والحجز: من الساعة 10:00 صباحاً إلى 10:00 مساءً
+        <h2>تقييم خدمة مطاعم السعودي</h2>
+        <p>رأيك يهمنا لنقدم الأفضل دائماً</p>
+        
+        <div class="rating-box">
+            <div class="rating-stars" id="starContainer">
+                <span data-value="1">★</span>
+                <span data-value="2">★</span>
+                <span data-value="3">★</span>
+                <span data-value="4">★</span>
+                <span data-value="5">★</span>
             </div>
+            <div class="rating-emoji" id="ratingEmoji">😐</div>
+            <button class="submit-btn" onclick="submitRating()">إرسال التقييم</button>
+            <div id="rating-msg"></div>
         </div>
-
-        <!-- قسم التوصيل للدليفري -->
-        <div class="delivery-banner">
-            <div class="delivery-icon">🛵</div>
-            <h3>خدمة التوصيل السريع لجميع المحلات والدكاكين (دليفري)</h3>
-            <p>نصلك أينما كنت في أسرع وقت وبأعلى جودة!</p>
-        </div>
-
-        <!-- المنيو الشامل -->
-        <h2 class="section-title">قائمة الطعام الأصيلة</h2>
-        <div class="menu-grid">
-            <div class="menu-category">
-                <h4>الكبسات والأرز</h4>
-                <ul>
-                    <li>جميع أنواع الكبسات السعودية</li>
-                    <li>رز المندي الأصيل</li>
-                    <li>رز البشاور</li>
-                    <li>رز المضغوط</li>
-                </ul>
-            </div>
-            <div class="menu-category">
-                <h4>الدجاج، اللحوم والأسماك</h4>
-                <ul>
-                    <li>دجاج مضغوط</li>
-                    <li>دجاج شواية</li>
-                    <li>دجاج فحم</li>
-                    <li>لحم بلدي طازج</li>
-                    <li>أطباق السمك الطازج</li>
-                </ul>
-            </div>
-            <div class="menu-category">
-                <h4>المشروبات الغازية</h4>
-                <ul>
-                    <li>بيبسي (عادي / دايت)</li>
-                    <li>كوكاكولا (عادي / دايت)</li>
-                    <li>سفن أب / سبريت</li>
-                    <li>ميرندا برتقال / حمضيات</li>
-                    <li>ماء صحة</li>
-                </ul>
-            </div>
-            <div class="menu-category">
-                <h4>الحلويات الشعبية</h4>
-                <ul>
-                    <li>عريكة ملكي</li>
-                    <li>معصوب مميز</li>
-                </ul>
-            </div>
-            <div class="menu-category">
-                <h4>المقبلات والصوصات</h4>
-                <ul>
-                    <li>بسباس حار</li>
-                    <li>عشار</li>
-                    <li>سلطة عربي</li>
-                    <li>سحاوق جبن</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- نموذج طلب الوجبات للمحلات -->
-        <div id="orderContainer"></div>
-
-        <!-- شكاوى واستفسارات + تقييم الخدمة -->
-        <div class="support-section">
-            <h3 style="color: #d84315;"><i class="fa-solid fa-headset"></i> الشكاوى والاستفسارات</h3>
-            <p>هل تواجهك مشكلة أو لديك استفسار؟ نحن هنا لخدمتك دائماً.</p>
-            <a href="https://wa.me/967777334654?text=السلام عليكم، لدي شكوى أو استفسار بخصوص:" target="_blank" class="complaint-btn">
-                <i class="fa-brands fa-whatsapp"></i> إرسال شكوى واتساب
-            </a>
-            
-            <div style="margin-top: 25px;">
-                <p><strong>قيّم تجربتك معنا:</strong></p>
-                <div class="rating-box">
-                    <div class="rating-stars" id="starContainer">
-                        <span data-value="1">★</span>
-                        <span data-value="2">★</span>
-                        <span data-value="3">★</span>
-                        <span data-value="4">★</span>
-                        <span data-value="5">★</span>
-                    </div>
-                    <div class="rating-emoji" id="ratingEmoji">😐</div>
-                    <button type="button" class="btn btn-submit-rating" onclick="submitRating()">
-                        <i class="fa-solid fa-paper-plane"></i> إرسال التقييم
-                    </button>
-                    <p id="rating-msg"></p>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <!-- فوتر مع اسم المصمم -->
-    <footer>
-        <p>&copy; 2026 مجموعة مطاعم السعودي - جميع الحقوق محفوظة</p>
-        <p style="margin-top: 8px;">تصميم وتطوير: <a href="https://wa.me/967777696478?text=مرحباً مصمم شكري، أعجبني تصميم موقع مطاعم السعودي" target="_blank">شكري</a></p>
-    </footer>
-
     <script>
-        // التحقق من أوقات الدوام
-        function checkWorkingHours() {
-            const now = new Date();
-            const currentHour = now.getHours();
-            const container = document.getElementById('orderContainer');
-
-            if (currentHour >= 10 && currentHour < 22) {
-                container.innerHTML = `
-                    <div class="order-form-section" id="orderFormBox">
-                        <h3>طلب وجبة / توصيل للمحل</h3>
-                        <form id="orderForm">
-                            <div class="form-group">
-                                <label>اسم المحل / الدكان (إلزامي): *</label>
-                                <input type="text" id="shopName" placeholder="أدخل اسم محلك هنا..." required>
-                            </div>
-                            <div class="form-group">
-                                <label>عنوان المحل بالتفصيل (إلزامي): *</label>
-                                <input type="text" id="shopAddress" placeholder="الشارع، المنطقة، الجولة..." required>
-                            </div>
-                            <div class="form-group">
-                                <label>تفاصيل الطلب (الأكل المطلوب والكميات): *</label>
-                                <textarea id="orderDetails" rows="4" placeholder="اكتب الأطباق والكميات التي تريد حجزها..." required></textarea>
-                            </div>
-
-                            <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 10px;">اختر طريقة إرسال الطلب لرقمنا (770060055):</p>
-                            
-                            <div class="order-actions">
-                                <button type="button" onclick="sendWhatsApp()" class="btn btn-whatsapp">
-                                    <i class="fa-brands fa-whatsapp"></i> إرسال عبر واتساب
-                                </button>
-                                <button type="button" onclick="sendSMS()" class="btn btn-sms">
-                                    <i class="fa-solid fa-comment-sms"></i> إرسال عبر SMS
-                                </button>
-                                <a href="tel:+967770060055" class="btn btn-call">
-                                    <i class="fa-solid fa-phone"></i> اتصال مباشر
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div class="closed-notice">
-                        <i class="fa-solid fa-store-slash" style="font-size: 2.5rem; margin-bottom: 10px; display: block;"></i>
-                        عذراً، أوقات الدوام من الساعة 10:00 صباحاً وحتى 10:00 مساءً.<br>
-                        الحجز والطلبات مغلقة حالياً، ننتظرك خلال أوقات العمل الرسمية!
-                    </div>
-                `;
-            }
-        }
-
-        window.onload = checkWorkingHours;
-
-        function sendWhatsApp() {
-            const shop = document.getElementById('shopName').value.trim();
-            const address = document.getElementById('shopAddress').value.trim();
-            const details = document.getElementById('orderDetails').value.trim();
-
-            if(!shop || !address || !details) {
-                alert("الرجاء إدخال (اسم المحل) و (عنوان المحل) و (تفاصيل الطلب) بشكل إلزامي!");
-                return;
-            }
-
-            const message = `طلب جديد للمحل:%0a- اسم المحل: ${shop}%0a- العنوان: ${address}%0a- تفاصيل الطلب: ${details}`;
-            window.open(`https://wa.me/967770060055?text=${message}`, '_blank');
-        }
-
-        function sendSMS() {
-            const shop = document.getElementById('shopName').value.trim();
-            const address = document.getElementById('shopAddress').value.trim();
-            const details = document.getElementById('orderDetails').value.trim();
-
-            if(!shop || !address || !details) {
-                alert("الرجاء إدخال (اسم المحل) و (عنوان المحل) و (تفاصيل الطلب) بشكل إلزامي!");
-                return;
-            }
-
-            const bodyText = `اسم المحل: ${shop} | العنوان: ${address} | الطلب: ${details}`;
-            window.location.href = `sms:+967770060055?body=${encodeURIComponent(bodyText)}`;
-        }
-
-        // تفاعل النجوم المحدث مع رسائل مهذبة حسب التقييم
         let selectedRating = 0;
         const emojis = ['😞', '🙁', '😐', '😊', '😍'];
-
         const stars = document.querySelectorAll('.rating-stars span');
+        const msgEl = document.getElementById('rating-msg');
+
         stars.forEach((star, index) => {
             star.addEventListener('click', () => {
                 selectedRating = index + 1;
                 stars.forEach((s, i) => {
-                    if (i < selectedRating) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
+                    s.classList.toggle('active', i < selectedRating);
                 });
                 document.getElementById('ratingEmoji').innerText = emojis[selectedRating - 1];
-                document.getElementById('rating-msg').innerText = "";
             });
         });
 
         function submitRating() {
             if (selectedRating === 0) {
-                alert("الرجاء اختيار عدد النجوم أولاً قبل الإرسال!");
+                alert("الرجاء اختيار عدد النجوم أولاً!");
                 return;
             }
 
-            const msgEl = document.getElementById('rating-msg');
-            
-            // تخصيص رسالة مهذبة ومختلفة حسب عدد النجوم
-            if (selectedRating === 1) {
-                msgEl.style.color = "#c62828";
-                msgEl.style.backgroundColor = "#ffebee";
-                msgEl.innerText = "نأسف جداً لذلك! سنعمل جاهدين على تحسين وتطوير خدمتنا لتنال إعجابك في المرة القادمة.";
-            } else if (selectedRating === 2) {
-                msgEl.style.color = "#e65100";
-                msgEl.style.backgroundColor = "#fff3e0";
-                msgEl.innerText = "شكراً لملاحظتك، نعدك بتلافى القصور وتطوير خدماتنا قريباً.";
-            } else if (selectedRating === 3) {
-                msgEl.style.color = "#f57f17";
-                msgEl.style.backgroundColor = "#fffde7";
-                msgEl.innerText = "شكراً لتقييمك! نسعى دائماً لتقديم الأفضل وننتظر زيارتك القادمة.";
-            } else if (selectedRating === 4) {
-                msgEl.style.color = "#2e7d32";
-                msgEl.style.backgroundColor = "#e8f5e9";
-                msgEl.innerText = "شكراً لك! نحن سعادتون بأن الخدمة أعجبتك، ونعمل دائماً لتكون ممتازة.";
-            } else if (selectedRating === 5) {
-                msgEl.style.color = "#1b5e20";
-                msgEl.style.backgroundColor = "#e8f5e9";
-                msgEl.innerText = "ألف شكر لك! تقييمك الرائع يدفنا لتقديم الأفضل دائماً، نتشرف بخدمتك دوماً!";
-            }
+            const messages = [
+                "نأسف جداً لتقصيرنا! سنعمل جاهدين على تحسين خدمتنا لتنال رضاك.",
+                "شكراً لملاحظتك، سنقوم بمعالجة القصور وتطوير أدائنا.",
+                "شكراً لتقييمك! نسعى دائماً لتقديم تجربة أفضل.",
+                "شكراً لك! نحن سعداء بأن الخدمة نالت إعجابك.",
+                "ألف شكر! تقييمك الرائع يدفنا للتميز دائماً، نتشرف بخدمتك!"
+            ];
+
+            const colors = ["#c62828", "#e65100", "#f57f17", "#2e7d32", "#1b5e20"];
+            const bgs = ["#ffebee", "#fff3e0", "#fffde7", "#e8f5e9", "#e8f5e9"];
+
+            msgEl.innerText = messages[selectedRating - 1];
+            msgEl.style.backgroundColor = bgs[selectedRating - 1];
+            msgEl.style.color = colors[selectedRating - 1];
+            msgEl.style.display = "block";
         }
     </script>
 </body>
