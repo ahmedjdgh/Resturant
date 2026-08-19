@@ -70,6 +70,8 @@
         .rating-stars span.active { color: #ffb300; }
         .rating-emoji { font-size: 2.5rem; margin: 8px 0; }
 
+        #rating-msg { font-size: 0.9rem; font-weight: bold; margin-top: 10px; line-height: 1.5; padding: 8px; border-radius: 6px; }
+
         /* حقوق المصمم */
         footer { text-align: center; padding: 25px; background: #222; color: #aaa; font-size: 0.95rem; }
         footer a { color: #ffeb3b; text-decoration: none; font-weight: bold; }
@@ -97,7 +99,7 @@
             </div>
         </div>
 
-        <!-- قسم التوصيل للدليفري (دراجة نارية متحركة ومضمونة) -->
+        <!-- قسم التوصيل للدليفري -->
         <div class="delivery-banner">
             <div class="delivery-icon">🛵</div>
             <h3>خدمة التوصيل السريع لجميع المحلات والدكاكين (دليفري)</h3>
@@ -154,7 +156,7 @@
             </div>
         </div>
 
-        <!-- نموذج طلب الوجبات للمحلات (يظهر فقط في أوقات الدوام) -->
+        <!-- نموذج طلب الوجبات للمحلات -->
         <div id="orderContainer"></div>
 
         <!-- شكاوى واستفسارات + تقييم الخدمة -->
@@ -179,7 +181,7 @@
                     <button type="button" class="btn btn-submit-rating" onclick="submitRating()">
                         <i class="fa-solid fa-paper-plane"></i> إرسال التقييم
                     </button>
-                    <p id="rating-msg" style="font-size: 0.95rem; font-weight: bold; margin-top: 8px;"></p>
+                    <p id="rating-msg"></p>
                 </div>
             </div>
         </div>
@@ -193,10 +195,10 @@
     </footer>
 
     <script>
-        // التحقق من أوقات الدوام وإخفاء/إظهار نموذج الحجز بالكامل
+        // التحقق من أوقات الدوام
         function checkWorkingHours() {
             const now = new Date();
-            const currentHour = now.getHours(); // نظام 24 ساعة
+            const currentHour = now.getHours();
             const container = document.getElementById('orderContainer');
 
             if (currentHour >= 10 && currentHour < 22) {
@@ -274,7 +276,7 @@
             window.location.href = `sms:+967770060055?body=${encodeURIComponent(bodyText)}`;
         }
 
-        // تفاعل النجوم والإيموجي المضمونة
+        // تفاعل النجوم المحدث مع رسائل مهذبة حسب التقييم
         let selectedRating = 0;
         const emojis = ['😞', '🙁', '😐', '😊', '😍'];
 
@@ -299,9 +301,31 @@
                 alert("الرجاء اختيار عدد النجوم أولاً قبل الإرسال!");
                 return;
             }
+
             const msgEl = document.getElementById('rating-msg');
-            msgEl.style.color = "#388e3c";
-            msgEl.innerText = `شكراً لك! تم استلام تقييمك بنجاح (${selectedRating} نجوم).`;
+            
+            // تخصيص رسالة مهذبة ومختلفة حسب عدد النجوم
+            if (selectedRating === 1) {
+                msgEl.style.color = "#c62828";
+                msgEl.style.backgroundColor = "#ffebee";
+                msgEl.innerText = "نأسف جداً لذلك! سنعمل جاهدين على تحسين وتطوير خدمتنا لتنال إعجابك في المرة القادمة.";
+            } else if (selectedRating === 2) {
+                msgEl.style.color = "#e65100";
+                msgEl.style.backgroundColor = "#fff3e0";
+                msgEl.innerText = "شكراً لملاحظتك، نعدك بتلافى القصور وتطوير خدماتنا قريباً.";
+            } else if (selectedRating === 3) {
+                msgEl.style.color = "#f57f17";
+                msgEl.style.backgroundColor = "#fffde7";
+                msgEl.innerText = "شكراً لتقييمك! نسعى دائماً لتقديم الأفضل وننتظر زيارتك القادمة.";
+            } else if (selectedRating === 4) {
+                msgEl.style.color = "#2e7d32";
+                msgEl.style.backgroundColor = "#e8f5e9";
+                msgEl.innerText = "شكراً لك! نحن سعادتون بأن الخدمة أعجبتك، ونعمل دائماً لتكون ممتازة.";
+            } else if (selectedRating === 5) {
+                msgEl.style.color = "#1b5e20";
+                msgEl.style.backgroundColor = "#e8f5e9";
+                msgEl.innerText = "ألف شكر لك! تقييمك الرائع يدفنا لتقديم الأفضل دائماً، نتشرف بخدمتك دوماً!";
+            }
         }
     </script>
 </body>
