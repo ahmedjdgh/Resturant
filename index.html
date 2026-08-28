@@ -18,30 +18,49 @@
 
         .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
 
-        /* قسم الفروع وأوقات الدوام */
-        .branches-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-right: 5px solid #8b0032; }
-        .branches-section h3 { color: #8b0032; margin-bottom: 10px; font-size: 1.2rem; }
-        .branches-section p { font-size: 1rem; color: #555; line-height: 1.8; }
+        /* قسم تحديد الفروع الجغرافي */
+        .branch-selector-section { background: white; padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-right: 5px solid #8b0032; text-align: center; }
+        .branch-selector-section h3 { color: #8b0032; margin-bottom: 15px; font-size: 1.3rem; }
+        .branch-options { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
+        .branch-card { border: 2px solid #ddd; padding: 15px 25px; border-radius: 10px; cursor: pointer; transition: 0.3s; background: #fff; font-weight: bold; flex: 1; min-width: 200px; text-align: center; }
+        .branch-card:hover { border-color: #8b0032; background: #fff5f7; }
+        .branch-card.selected { border-color: #8b0032; background: #8b0032; color: white; box-shadow: 0 4px 10px rgba(139,0,50,0.3); }
+        .active-branch-info { background: #fff3e0; color: #e65100; padding: 10px 15px; border-radius: 8px; font-weight: bold; display: inline-block; margin-top: 10px; }
+
+        /* أوقات الدوام */
         .working-hours { background: #fff3e0; color: #e65100; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-weight: bold; display: inline-block; }
 
-        /* قسم الدليفري والتوصيل للمحلات */
+        /* قسم الدليفري والتوصيل للمحلات مع صورة الدراجة النارية */
         .delivery-banner { background: #fff; border: 2px dashed #8b0032; padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .delivery-icon { font-size: 3.5rem; margin-bottom: 10px; display: inline-block; animation: bounce 1.5s infinite; }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+        .delivery-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 12px; border: 3px solid #ffeb3b; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .delivery-banner h3 { color: #8b0032; font-size: 1.3rem; margin-bottom: 8px; }
         .delivery-banner p { color: #555; font-size: 1rem; }
 
-        /* المنيو */
+        /* المنيو مع خاصية الإضافة مع الكميات وأحجام الدجاج */
         .section-title { text-align: center; color: #8b0032; margin-bottom: 20px; font-family: 'Amiri', serif; font-size: 2rem; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 40px; }
         .menu-category { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-top: 4px solid #8b0032; }
-        .menu-category h4 { color: #8b0032; margin-bottom: 10px; font-size: 1.2rem; }
-        .menu-category ul { list-style: none; padding-right: 15px; }
-        .menu-category li { margin-bottom: 8px; position: relative; }
-        .menu-category li::before { content: "▪"; color: #ffeb3b; position: absolute; right: -15px; }
+        .menu-category h4 { color: #8b0032; margin-bottom: 12px; font-size: 1.2rem; }
+        .menu-category ul { list-style: none; padding: 0; }
+        .menu-category li { margin-bottom: 12px; display: flex; flex-direction: column; background: #fafafa; padding: 10px 12px; border-radius: 8px; border: 1px solid #eee; transition: 0.2s; gap: 8px; }
+        .menu-category li:hover { background: #f1f1f1; }
+        
+        .item-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .menu-item-name { font-size: 0.95rem; font-weight: 500; }
+        
+        .item-action-box { display: flex; align-items: center; gap: 5px; width: 100%; justify-content: flex-end; }
+        .qty-input { width: 55px; padding: 5px; text-align: center; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; font-weight: bold; }
+        .portion-select { padding: 5px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.85rem; background: white; font-weight: bold; color: #8b0032; }
+        .add-to-cart-btn { background-color: #8b0032; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: bold; display: inline-flex; align-items: center; gap: 4px; transition: 0.2s; }
+        .add-to-cart-btn:hover { background-color: #5a0020; }
+
+        /* سلة الطلبات المبدئية */
+        .cart-section { background: white; padding: 25px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 2px solid #ffeb3b; }
+        .cart-section h3 { color: #8b0032; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .cart-items-list { list-style: none; margin-bottom: 15px; max-height: 200px; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        .remove-item { color: #c62828; cursor: pointer; font-size: 0.9rem; }
+        .empty-cart-text { color: #777; font-style: italic; text-align: center; padding: 10px 0; }
 
         /* نموذج طلب المحلات والدليفري */
         .order-form-section { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); margin-bottom: 40px; }
@@ -70,8 +89,6 @@
         .rating-stars span.active { color: #ffb300; }
         .rating-emoji { font-size: 2.5rem; margin: 8px 0; }
 
-        #rating-msg { font-size: 0.9rem; font-weight: bold; margin-top: 10px; line-height: 1.5; padding: 8px; border-radius: 6px; }
-
         /* حقوق المصمم */
         footer { text-align: center; padding: 25px; background: #222; color: #aaa; font-size: 0.95rem; }
         footer a { color: #ffeb3b; text-decoration: none; font-weight: bold; }
@@ -87,11 +104,31 @@
 
     <div class="container">
 
+        <!-- اختيار الفرع الجغرافي الأقرب -->
+        <div class="branch-selector-section">
+            <h3><i class="fa-solid fa-map-location-dot"></i> اختر الفرع الأقرب إليك لتقديم الطلب:</h3>
+            <div class="branch-options">
+                <div class="branch-card" id="branchSheikh" onclick="selectBranch('فرع الشيخ عثمان (أمام سوق السمك)')">
+                    <i class="fa-solid fa-store" style="font-size: 1.5rem; margin-bottom: 8px; display: block;"></i>
+                    فرع الشيخ عثمان<br><span style="font-size: 0.85rem; font-weight: normal; color: #666;">أمام سوق السمك</span>
+                </div>
+                <div class="branch-card" id="branchHanaager" onclick="selectBranch('فرع الهناجر (أمام السوق الجديد)')">
+                    <i class="fa-solid fa-store" style="font-size: 1.5rem; margin-bottom: 8px; display: block;"></i>
+                    فرع الهناجر<br><span style="font-size: 0.85rem; font-weight: normal; color: #666;">أمام السوق الجديد</span>
+                </div>
+            </div>
+            <div id="selectedBranchDisplay" style="display: none;">
+                <div class="active-branch-info">
+                    <i class="fa-solid fa-circle-check"></i> تم اختيار: <span id="currentBranchText"></span>
+                </div>
+            </div>
+        </div>
+
         <!-- فروعنا وأوقات الدوام -->
-        <div class="branches-section">
-            <h3><i class="fa-solid fa-location-dot"></i> فروعنا الرئيسية:</h3>
-            <p>
-                📍 <strong>عدن:</strong> الشيخ عثمان - أمام سوق السمك، وفرعنا أيضاً في الهناجر.<br>
+        <div class="branches-section" style="background: white; padding: 20px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-right: 5px solid #8b0032;">
+            <h3 style="color: #8b0032; margin-bottom: 10px; font-size: 1.2rem;"><i class="fa-solid fa-location-dot"></i> عناوين الفروع:</h3>
+            <p style="font-size: 1rem; color: #555; line-height: 1.8;">
+                📍 <strong>عدن:</strong> الشيخ عثمان - أمام سوق السمك، وفرعنا أيضاً في الهناجر أمام السوق الجديد.<br>
                 📍 <strong>تعز:</strong> جولة المسبح، وفرع حوض الإشراف.
             </p>
             <div class="working-hours">
@@ -99,9 +136,9 @@
             </div>
         </div>
 
-        <!-- قسم التوصيل للدليفري -->
+        <!-- صورة ودعاية التوصيل للمحلات (دراجة نارية) -->
         <div class="delivery-banner">
-            <div class="delivery-icon">🛵</div>
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=300&auto=format&fit=crop&q=80" alt="دراجة توصيل دليفري" class="delivery-img">
             <h3>خدمة التوصيل السريع لجميع المحلات والدكاكين (دليفري)</h3>
             <p>نصلك أينما كنت في أسرع وقت وبأعلى جودة!</p>
         </div>
@@ -109,54 +146,227 @@
         <!-- المنيو الشامل -->
         <h2 class="section-title">قائمة الطعام الأصيلة</h2>
         <div class="menu-grid">
+            <!-- الكبسات والأرز -->
             <div class="menu-category">
                 <h4>الكبسات والأرز</h4>
                 <ul>
-                    <li>جميع أنواع الكبسات السعودية</li>
-                    <li>رز المندي الأصيل</li>
-                    <li>رز البشاور</li>
-                    <li>رز المضغوط</li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">جميع أنواع الكبسات السعودية</span>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-كبسات">
+                            <button class="add-to-cart-btn" onclick="addToCart('جميع أنواع الكبسات السعودية', 'qty-كبسات')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">رز المندي الأصيل</span>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-مندي">
+                            <button class="add-to-cart-btn" onclick="addToCart('رز المندي الأصيل', 'qty-مندي')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">رز البشاور</span>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-بشاور">
+                            <button class="add-to-cart-btn" onclick="addToCart('رز البشاور', 'qty-بشاور')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">رز المضغوط</span>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-مضغوط">
+                            <button class="add-to-cart-btn" onclick="addToCart('رز المضغوط', 'qty-مضغوط')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
                 </ul>
             </div>
+
+            <!-- الدجاج، اللحوم والأسماك (مع خيارات الحجم الخاصة بالدجاج) -->
             <div class="menu-category">
                 <h4>الدجاج، اللحوم والأسماك</h4>
                 <ul>
-                    <li>دجاج مضغوط</li>
-                    <li>دجاج شواية</li>
-                    <li>دجاج فحم</li>
-                    <li>لحم بلدي طازج</li>
-                    <li>أطباق السمك الطازج</li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">دجاج مضغوط</span>
+                            <select class="portion-select" id="size-دجاج_مضغوط">
+                                <option value="حبة كاملة">حبة</option>
+                                <option value="ثلاث أرباع حبة">ثلاث أرباع (3/4)</option>
+                                <option value="نصف حبة">نصف (1/2)</option>
+                                <option value="ربع حبة">ربع (1/4)</option>
+                            </select>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-دجاج_مضغوط">
+                            <button class="add-to-cart-btn" onclick="addChickenToCart('دجاج مضغوط', 'size-دجاج_مضغوط', 'qty-دجاج_مضغوط')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">دجاج شواية</span>
+                            <select class="portion-select" id="size-دجاج_شواية">
+                                <option value="حبة كاملة">حبة</option>
+                                <option value="ثلاث أرباع حبة">ثلاث أرباع (3/4)</option>
+                                <option value="نصف حبة">نصف (1/2)</option>
+                                <option value="ربع حبة">ربع (1/4)</option>
+                            </select>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-دجاج_شواية">
+                            <button class="add-to-cart-btn" onclick="addChickenToCart('دجاج شواية', 'size-دجاج_شواية', 'qty-دجاج_شواية')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">دجاج فحم</span>
+                            <select class="portion-select" id="size-دجاج_فحم">
+                                <option value="حبة كاملة">حبة</option>
+                                <option value="ثلاث أرباع حبة">ثلاث أرباع (3/4)</option>
+                                <option value="نصف حبة">نصف (1/2)</option>
+                                <option value="ربع حبة">ربع (1/4)</option>
+                            </select>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-دجاج_فحم">
+                            <button class="add-to-cart-btn" onclick="addChickenToCart('دجاج فحم', 'size-دجاج_فحم', 'qty-دجاج_فحم')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">لحم بلدي طازج</span>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-لحم">
+                            <button class="add-to-cart-btn" onclick="addToCart('لحم بلدي طازج', 'qty-لحم')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row">
+                            <span class="menu-item-name">أطباق السمك الطازج</span>
+                        </div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-سمك">
+                            <button class="add-to-cart-btn" onclick="addToCart('أطباق السمك الطازج', 'qty-سمك')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
                 </ul>
             </div>
+
+            <!-- المشروبات الغازية -->
             <div class="menu-category">
                 <h4>المشروبات الغازية</h4>
                 <ul>
-                    <li>بيبسي (عادي / دايت)</li>
-                    <li>كوكاكولا (عادي / دايت)</li>
-                    <li>سفن أب / سبريت</li>
-                    <li>ميرندا برتقال / حمضيات</li>
-                    <li>ديج واتر ومشروبات طاقة</li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">بيبسي (عادي / دايت)</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-بيبسي">
+                            <button class="add-to-cart-btn" onclick="addToCart('بيبسي (عادي / دايت)', 'qty-بيبسي')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">كوكاكولا (عادي / دايت)</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-كوكا">
+                            <button class="add-to-cart-btn" onclick="addToCart('كوكاكولا (عادي / دايت)', 'qty-كوكا')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">سفن أب / سبريت</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-سفن">
+                            <button class="add-to-cart-btn" onclick="addToCart('سفن أب / سبريت', 'qty-سفن')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">ميرندا برتقال / حمضيات</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-ميرندا">
+                            <button class="add-to-cart-btn" onclick="addToCart('ميرندا برتقال / حمضيات', 'qty-ميرندا')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">مياه ومشروبات طاقة</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-مياه">
+                            <button class="add-to-cart-btn" onclick="addToCart('مياه ومشروبات طاقة', 'qty-مياه')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
                 </ul>
             </div>
+
+            <!-- الحلويات الشعبية -->
             <div class="menu-category">
                 <h4>الحلويات الشعبية</h4>
                 <ul>
-                    <li>عريكة ملكي</li>
-                    <li>معصوب مميز</li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">عريكة ملكي</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-عريكة">
+                            <button class="add-to-cart-btn" onclick="addToCart('عريكة ملكي', 'qty-عريكة')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">معصوب مميز</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-معصوب">
+                            <button class="add-to-cart-btn" onclick="addToCart('معصوب مميز', 'qty-معصوب')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
                 </ul>
             </div>
+
+            <!-- المقبلات والصوصات -->
             <div class="menu-category">
                 <h4>المقبلات والصوصات</h4>
                 <ul>
-                    <li>بسباس حار</li>
-                    <li>عشار</li>
-                    <li>سلطة عربي</li>
-                    <li>سحاوق جبن</li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">بسباس حار</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-بسباس">
+                            <button class="add-to-cart-btn" onclick="addToCart('بسباس حار', 'qty-بسباس')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">عشار</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-عشار">
+                            <button class="add-to-cart-btn" onclick="addToCart('عشار', 'qty-عشار')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">سلطة عربي</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-سلطة">
+                            <button class="add-to-cart-btn" onclick="addToCart('سلطة عربي', 'qty-سلطة')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-row"><span class="menu-item-name">سحاوق جبن</span></div>
+                        <div class="item-action-box">
+                            <input type="number" min="1" value="1" class="qty-input" id="qty-سحاوق">
+                            <button class="add-to-cart-btn" onclick="addToCart('سحاوق جبن', 'qty-سحاوق')"><i class="fa-solid fa-plus"></i> إضافة</button>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
 
-        <!-- نموذج طلب الوجبات للمحلات -->
+        <!-- سلة الطلبات المبدئية -->
+        <div class="cart-section">
+            <h3><i class="fa-solid fa-basket-shopping"></i> سلة طلباتك المختار:</h3>
+            <ul class="cart-items-list" id="cartItemsList">
+                <li class="empty-cart-text">السلة فارغة حالياً. حدد الحجم والكمية واضغط على زر "إضافة".</li>
+            </ul>
+        </div>
+
+        <!-- نموذج طلب الوجبات للمحلات (يظهر فقط في أوقات الدوام) -->
         <div id="orderContainer"></div>
 
         <!-- شكاوى واستفسارات + تقييم الخدمة -->
@@ -181,7 +391,7 @@
                     <button type="button" class="btn btn-submit-rating" onclick="submitRating()">
                         <i class="fa-solid fa-paper-plane"></i> إرسال التقييم
                     </button>
-                    <p id="rating-msg"></p>
+                    <p id="rating-msg" style="font-size: 0.95rem; font-weight: bold; margin-top: 8px;"></p>
                 </div>
             </div>
         </div>
@@ -195,10 +405,104 @@
     </footer>
 
     <script>
-        // التحقق من أوقات الدوام
+        let selectedBranch = "";
+        let cart = [];
+
+        // اختيار الفرع الجغرافي
+        function selectBranch(branchName) {
+            selectedBranch = branchName;
+            document.getElementById('branchSheikh').classList.remove('selected');
+            document.getElementById('branchHanaager').classList.remove('selected');
+
+            if (branchName.includes('الشيخ عثمان')) {
+                document.getElementById('branchSheikh').classList.add('selected');
+            } else {
+                document.getElementById('branchHanaager').classList.add('selected');
+            }
+
+            document.getElementById('selectedBranchDisplay').style.display = 'block';
+            document.getElementById('currentBranchText').innerText = branchName;
+        }
+
+        // إضافة منتج عشوائي (غير الدجاج) مع الكمية
+        function addToCart(itemName, qtyInputId) {
+            const qtyInput = document.getElementById(qtyInputId);
+            let quantity = parseInt(qtyInput.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                alert("الرجاء إدخال كمية صحيحة لا تقل عن 1");
+                qtyInput.value = 1;
+                return;
+            }
+
+            let existingItem = cart.find(item => item.name === itemName && !item.size);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name: itemName, quantity: quantity, size: null });
+            }
+
+            qtyInput.value = 1;
+            updateCartUI();
+        }
+
+        // إضافة الدجاج مع الحجم (حبة، ثلاث أرباع، نصف، ربع) والكمية
+        function addChickenToCart(itemName, sizeSelectId, qtyInputId) {
+            const sizeSelect = document.getElementById(sizeSelectId);
+            const qtyInput = document.getElementById(qtyInputId);
+            const sizeValue = sizeSelect.value;
+            let quantity = parseInt(qtyInput.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                alert("الرجاء إدخال كمية صحيحة لا تقل عن 1");
+                qtyInput.value = 1;
+                return;
+            }
+
+            let fullName = `${itemName} (${sizeValue})`;
+            let existingItem = cart.find(item => item.name === itemName && item.size === sizeValue);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name: itemName, size: sizeValue, quantity: quantity });
+            }
+
+            qtyInput.value = 1;
+            updateCartUI();
+        }
+
+        // إزالة منتج من السلة
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // تحديث عرض السلة
+        function updateCartUI() {
+            const listContainer = document.getElementById('cartItemsList');
+            if (cart.length === 0) {
+                listContainer.innerHTML = '<li class="empty-cart-text">السلة فارغة حالياً. حدد الحجم والكمية واضغط على زر "إضافة".</li>';
+                return;
+            }
+
+            let html = '';
+            cart.forEach((item, index) => {
+                let displayName = item.size ? `${item.name} (${item.size})` : item.name;
+                html += `
+                    <li class="cart-item">
+                        <span><i class="fa-solid fa-check" style="color: #8b0032; margin-left: 8px;"></i><strong>${displayName}</strong> (الكمية: ${item.quantity})</span>
+                        <span class="remove-item" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash-can"></i> حذف</span>
+                    </li>
+                `;
+            });
+            listContainer.innerHTML = html;
+        }
+
+        // التحقق من أوقات الدوام وإخفاء/إظهار نموذج الحجز بالكامل
         function checkWorkingHours() {
             const now = new Date();
-            const currentHour = now.getHours();
+            const currentHour = now.getHours(); // نظام 24 ساعة
             const container = document.getElementById('orderContainer');
 
             if (currentHour >= 10 && currentHour < 22) {
@@ -215,8 +519,8 @@
                                 <input type="text" id="shopAddress" placeholder="الشارع، المنطقة، الجولة..." required>
                             </div>
                             <div class="form-group">
-                                <label>تفاصيل الطلب (الأكل المطلوب والكميات): *</label>
-                                <textarea id="orderDetails" rows="4" placeholder="اكتب الأطباق والكميات التي تريد حجزها..." required></textarea>
+                                <label>ملاحظات إضافية على الطلب:</label>
+                                <textarea id="orderDetails" rows="3" placeholder="اكتب أي تفاصيل أخرى ترغب بها..."></textarea>
                             </div>
 
                             <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 10px;">اختر طريقة إرسال الطلب لرقمنا (770060055):</p>
@@ -249,34 +553,56 @@
         window.onload = checkWorkingHours;
 
         function sendWhatsApp() {
+            if (!selectedBranch) {
+                alert("الرجاء اختيار الفرع الأقرب إليك أولاً من أعلى الصفحة!");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            if (cart.length === 0) {
+                alert("السلة فارغة! الرجاء اختيار منتجات وتحديد الكمية أولاً.");
+                return;
+            }
+
             const shop = document.getElementById('shopName').value.trim();
             const address = document.getElementById('shopAddress').value.trim();
             const details = document.getElementById('orderDetails').value.trim();
 
-            if(!shop || !address || !details) {
-                alert("الرجاء إدخال (اسم المحل) و (عنوان المحل) و (تفاصيل الطلب) بشكل إلزامي!");
+            if(!shop || !address) {
+                alert("الرجاء إدخال (اسم المحل) و (عنوان المحل) بشكل إلزامي!");
                 return;
             }
 
-            const message = `طلب جديد للمحل:%0a- اسم المحل: ${shop}%0a- العنوان: ${address}%0a- تفاصيل الطلب: ${details}`;
+            let cartString = cart.map(item => item.size ? `${item.name} (${item.size}) [الكمية: ${item.quantity}]` : `${item.name} [الكمية: ${item.quantity}]`).join('، ');
+            const message = `طلب جديد للمحل:%0a- الفرع المختار: ${selectedBranch}%0a- اسم المحل: ${shop}%0a- العنوان: ${address}%0a- المنتجات والكميات: ${cartString}%0a- ملاحظات: ${details || 'لا يوجد'}`;
             window.open(`https://wa.me/967770060055?text=${message}`, '_blank');
         }
 
         function sendSMS() {
+            if (!selectedBranch) {
+                alert("الرجاء اختيار الفرع الأقرب إليك أولاً من أعلى الصفحة!");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            if (cart.length === 0) {
+                alert("السلة فارغة! الرجاء اختيار منتجات وتحديد الكمية أولاً.");
+                return;
+            }
+
             const shop = document.getElementById('shopName').value.trim();
             const address = document.getElementById('shopAddress').value.trim();
             const details = document.getElementById('orderDetails').value.trim();
 
-            if(!shop || !address || !details) {
-                alert("الرجاء إدخال (اسم المحل) و (عنوان المحل) و (تفاصيل الطلب) بشكل إلزامي!");
+            if(!shop || !address) {
+                alert("الرجاء إدخال (اسم المحل) و (عنوان المحل) بشكل إلزامي!");
                 return;
             }
 
-            const bodyText = `اسم المحل: ${shop} | العنوان: ${address} | الطلب: ${details}`;
+            let cartString = cart.map(item => item.size ? `${item.name} (${item.size}) عدد ${item.quantity}` : `${item.name} عدد ${item.quantity}`).join('، ');
+            const bodyText = `الفرع: ${selectedBranch} | المحل: ${shop} | العنوان: ${address} | الطلبات: ${cartString} | ملاحظات: ${details || 'لا يوجد'}`;
             window.location.href = `sms:+967770060055?body=${encodeURIComponent(bodyText)}`;
         }
 
-        // تفاعل النجوم المحدث مع رسائل مهذبة حسب التقييم
+        // تفاعل النجوم والإيموجي
         let selectedRating = 0;
         const emojis = ['😞', '🙁', '😐', '😊', '😍'];
 
@@ -301,31 +627,9 @@
                 alert("الرجاء اختيار عدد النجوم أولاً قبل الإرسال!");
                 return;
             }
-
             const msgEl = document.getElementById('rating-msg');
-            
-            // تخصيص رسالة مهذبة ومختلفة حسب عدد النجوم
-            if (selectedRating === 1) {
-                msgEl.style.color = "#c62828";
-                msgEl.style.backgroundColor = "#ffebee";
-                msgEl.innerText = "نأسف جداً لذلك! سنعمل جاهدين على تحسين وتطوير خدمتنا لتنال إعجابك في المرة القادمة.";
-            } else if (selectedRating === 2) {
-                msgEl.style.color = "#e65100";
-                msgEl.style.backgroundColor = "#fff3e0";
-                msgEl.innerText = "شكراً لملاحظتك، نعدك بتلافى القصور وتطوير خدماتنا قريباً.";
-            } else if (selectedRating === 3) {
-                msgEl.style.color = "#f57f17";
-                msgEl.style.backgroundColor = "#fffde7";
-                msgEl.innerText = "شكراً لتقييمك! نسعى دائماً لتقديم الأفضل وننتظر زيارتك القادمة.";
-            } else if (selectedRating === 4) {
-                msgEl.style.color = "#2e7d32";
-                msgEl.style.backgroundColor = "#e8f5e9";
-                msgEl.innerText = "شكراً لك! نحن سعادتون بأن الخدمة أعجبتك، ونعمل دائماً لتكون ممتازة.";
-            } else if (selectedRating === 5) {
-                msgEl.style.color = "#1b5e20";
-                msgEl.style.backgroundColor = "#e8f5e9";
-                msgEl.innerText = "ألف شكر لك! تقييمك الرائع يدفنا لتقديم الأفضل دائماً، نتشرف بخدمتك دوماً!";
-            }
+            msgEl.style.color = "#388e3c";
+            msgEl.innerText = `شكراً لك! تم استلام تقييمك بنجاح (${selectedRating} نجوم).`;
         }
     </script>
 </body>
